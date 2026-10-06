@@ -116,6 +116,32 @@ def simulate():
                 print("Failed to connect to backend...")
                 time.sleep(5)
                 break
+
+        # Occasionally generate a cyber-physical threat or system update
+        if is_anomaly and anomalous_sensor:
+            try:
+                threat_payload = {
+                    "severity": random.choice(["HIGH", "MEDIUM"]),
+                    "location": f"{anomalous_sensor} (Corridor KM {random.randint(120, 680)})",
+                    "event": random.choice([
+                        "Acoustic frequency harmonic spike (stress defect)",
+                        "Impulsive vibration acceleration deviation (joint shear)",
+                        "Excessive thermal gradient detected on rail head"
+                    ]),
+                    "category": "PHYSICAL_DEFECT"
+                }
+                requests.post("http://127.0.0.1:8000/api/v1/threats", json=threat_payload)
+
+                event_payload = {
+                    "category": "OPERATION",
+                    "source": "SIMULATOR",
+                    "description": f"Automated inspection triggered for {anomalous_sensor}",
+                    "status": "ACTIVE",
+                    "tab": "live"
+                }
+                requests.post("http://127.0.0.1:8000/api/v1/events", json=event_payload)
+            except Exception as e:
+                pass
                 
         print(f"Sent update at {datetime.now().isoformat()}")
         time.sleep(5) # Send data every 5 seconds
