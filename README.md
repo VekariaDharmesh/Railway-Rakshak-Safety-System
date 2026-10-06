@@ -1,179 +1,181 @@
-# Railrakshak
-## Behavioral Anomaly & Fracture Detection Suite
-**National Railway Safety & Predictive Infrastructure Platform**  
-*AI-Driven (Computer Vision + Time-Series Forecasting) — Zero Manual Inspection Dependency*
+# RAILWAY RAKSHAK
+## Cyber-NOC / Railway Infrastructure Defense & Operations Platform
+**Enterprise Mission Control for National Railway Security, Sensor Grid Telemetry & Rapid Incident Dispatch**
 
 ---
 
-### 📌 What is Railrakshak?
-**Railrakshak AI** is a privacy-focused, mission-critical infrastructure tool that detects railway track fractures, sensor anomalies, and operational risks through behavioral AI analysis instead of scheduled manual checks.
+### 📌 Architecture Overview
 
-It learns the "normal" vibrational and visual patterns of a healthy track network and flags unusual patterns such as:
-- **Structural Anomalies**: Micro-cracks detected via drone-based computer vision.
-- **Predictive Risk Spikes**: 7-day and 30-day forecasting of potential failures.
-- **Sensor Deviations**: Abnormal track vibration, temperature, or alignment data.
-- **Environmental Threats**: GIS-integrated risk assessments for weather-related disasters.
+Railway Rakshak is an operational defense and intelligence platform designed for railway cybersecurity teams, dispatch commanders, and track maintenance engineers. The system integrates real-time telemetry ingestion, machine learning anomaly detection, aerial drone computer vision, and tamper-evident SHA-256 audit ledgers.
 
----
-
-### ✨ Main Features
-- **Zero-Day Fracture Detection**: Automated identification of unknown track defects.
-- **Personalized Predictive Model**: AI trained on specific regional track usage and soil behavior.
-- **Cyber-NOC Dashboard**: Real-time operational monitoring and command center.
-- **Map Intelligence**: GIS-based tracking of infrastructure health across the network.
-- **Blockchain Maintenance Ledger**: Tamper-proof verification of all safety records.
-- **Automated Dispatch System**: Professional AI-generated threat notifications and work orders.
-- **IoT Sensor Suite**: Real-time monitoring of 25+ live sensor data points.
-- **Cross-platform Mobility**: Works on desktop command centers and field-agent devices.
-
----
-
-### 🚀 Quick Start (Installation)
-1. **Clone Repository**
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/railrakshak.git
-   cd railrakshak
-   ```
-
-2. **Create Virtual Environment**
-   - **Linux / macOS**
-     ```bash
-     python3 -m venv venv
-     source venv/bin/activate
-     ```
-   - **Windows**
-     ```bash
-     python -m venv venv
-     .\venv\Scripts\activate
-     ```
-
-3. **Install Dependencies**
-   ```bash
-   pip install --upgrade pip
-   pip install -r requirements.txt
-   ```
-
-4. **Train Your Predictive Model (Recommended)**
-   - **Step 1 – Process historical data**
-     ```bash
-     python data_processor.py
-     ```
-   - **Step 2 – Train AI Predictor**
-     ```bash
-     python train_predictor.py
-     ```
-   *This generates the trained weights in the `/models` directory.*
-
-5. **Run Application**
-   - **Recommended (Launch NOC Dashboard)**
-     ```bash
-     ./run_noc.sh
-     ```
-   - **OR manually**
-     ```bash
-     streamlit run dashboard.py --server.address=0.0.0.0 --server.port=8501
-     ```
-
----
-
-### 📂 Project Structure
-```text
-railrakshak/
-│
-├── dashboard.py           # Streamlit Cyber-NOC Interface
-├── run_noc.sh            # Launch script
-│
-├── vision_engine.py      # Drone-based Crack Detection (CV)
-├── predictive_model.py    # Time-series Risk Forecasting (AI)
-│
-├── iot_bridge.py         # Sensor data integration
-├── blockchain_service.py  # Tamper-proof Ledger management
-│
-├── notification_service.py # Alerting & Dispatch center
-│
-├── data_processor.py      # Data cleaning & normalization
-├── train_predictor.py     # AI model training script
-│
-├── requirements.txt       # Dependencies
-├── README.md              # Documentation
-└── models/                # Saved model weights (.pth / .pkl)
+```
+       Railway Nodes / Sensors / Wayside RTUs / Drones
+                            ↓
+               Telemetry Ingestion API
+                            ↓
+               FastAPI Cyber-NOC Gateway
+                            ↓
+     ┌──────────────────────┼──────────────────────┐
+     ↓                      ↓                      ↓
+Anomaly Engine      Incident Lifecycle     Predictive AI Service
+(Isolation Forest)    (RBAC Workflows)     (Corridor Inference)
+     ↓                      ↓                      ↓
+     └──────────────────────┼──────────────────────┘
+                            ↓
+            PostgreSQL / SQLite Database
+                            ↓
+              Realtime SSE / WebSocket Layer
+                            ↓
+             Railway Rakshak Cyber-NOC UI
 ```
 
 ---
 
-### 🛠️ Full Setup Guide
-#### Requirements
-- **Python 3.9 – 3.11**
-- **Git**
-- **FastAPI / Streamlit**
-- **OpenCV** (for computer vision modules)
+### 🚀 Key Modules & Capabilities
 
-#### Setup Steps
-1. Clone repository
-2. Create virtual environment
-3. Install dependencies
-4. Train AI models (recommended for regional accuracy)
-5. (Optional) Setup Drone Feed:
-   - Connect drone via RTSP/Mavlink
-   - Run: `python drone_connector.py`
+1. **NOC Dashboard**:
+   - Operational KPI Row: Network Health (%), Active Corridors (25/25), Unresolved Anomalies, Mean Response Time.
+   - Interactive Railway Corridor Intelligence Map with schematic & GIS views. Click any node to open the **Node Dossier Drawer** with real-time CPU, temperature, vibration, and connected corridors.
+   - Dense Threat & Anomaly Stream with instant detail drawer, threat acknowledgement, and rapid squad dispatch.
+   - Operational Status & System Events with live filter tabs.
 
----
+2. **Drone Computer Vision (CV)**:
+   - Live drone fleet status (active, available, mission, offline).
+   - Real-time aerial telemetry (GPS coordinates, altitude, speed, battery discharge).
+   - Computer vision detection pipeline for track micro-cracks, trespassing, and obstacles with OpenCV edge detection.
 
-### 🔧 Typical Usage
-- **Predictive Scanning**
-  - Open NOC Dashboard
-  - Select "Risk Forecast"
-  - View 7-day vs 30-day risk probability scores
-- **Drone Surveillance**
-  - Launch Vision Engine
-  - Click "Analyze Feed"
-  - Fractures > 85% confidence are auto-logged to blockchain
-- **Blockchain Verification**
-  - Access the "Maintenance Ledger"
-  - View cryptographically signed inspection records
+3. **Predictive AI Engine**:
+   - Actionable corridor risk cards displaying failure probabilities, acoustic harmonic deviation, thermal expansion gradient, and inspection recommendations.
+   - On-demand inference re-computation across national corridors.
 
----
+4. **Map Intelligence**:
+   - Full-screen GIS tactical railway map with live station markers, risk zones, and weather radar overlays.
 
-### ⚠️ Notes & Limitations
-- **Hardware Dependent**: Computer vision requires stable drone/camera feeds.
-- **Initial Training**: Best accuracy requires 3-6 months of historical sensor data.
-- **Blockchain Node**: Requires an active connection to the safety ledger.
-- **Privileged Access**: Critical alerts and dispatch require supervisor credentials.
+5. **Dispatch Center**:
+   - Complete incident lifecycle management (`NEW` ➔ `ACKNOWLEDGED` ➔ `INVESTIGATING` ➔ `DISPATCHED` ➔ `EN_ROUTE` ➔ `ON_SITE` ➔ `RESOLVED`).
+   - Rapid Squad assignment (`SQUAD-01`, `SQUAD-02`, etc.) with ETA tracking and audit logging.
+
+6. **Environmental Risk Monitor**:
+   - Continuous surveillance of track buckling indices, monsoon embankment saturation, flood risks, and fog visibility.
+
+7. **Cryptographic Blockchain Audit Ledger**:
+   - Immutable audit ledger where every incident, dispatch order, and panic event is mined into a cryptographically linked SHA-256 block.
+   - Real-time **Verify Ledger Integrity** engine checking chain linkage and hash validity.
+
+8. **System Health & Panic Protocol**:
+   - Functional emergency intervention protocol applying immediate 30 km/h caution orders and failsafe lockdowns across the network.
+   - Global command palette (`Ctrl + K`) for instant multi-asset search.
 
 ---
 
-### 🛠️ Troubleshooting
-| Problem | Solution |
-| :--- | :--- |
-| **Model accuracy low** | Retrain with a larger historical dataset |
-| **Drone feed lag** | Check network bandwidth or reduce resolution |
-| **NOC dashboard error** | Ensure all environment variables are set in `.env` |
-| **Blockchain sync fail** | Check network connection to the ledger node |
+### 🛠️ Technology Stack
+
+- **Backend**: Python 3.11+ / FastAPI
+- **Database**: PostgreSQL (production) with SQLite fallback (`railway_rakshak.db`)
+- **ORM & Migrations**: SQLAlchemy & Alembic
+- **Real-Time**: Server-Sent Events (SSE) & WebSockets
+- **Machine Learning**: Scikit-Learn (Isolation Forest), NumPy, OpenCV
+- **Authentication**: JWT Access & Refresh Tokens with Role-Based Access Control (RBAC)
+- **Frontend**: Vanilla JS, Modern Tactical CSS Tokens, Tailwind CSS, Leaflet GIS
+- **Containerization**: Docker & Docker Compose
 
 ---
 
-### 🔮 Future Improvements
-- **iOS/Android Field App** for maintenance crews.
-- **Micro-acoustic sensors** for real-time wheel-flat detection.
-- **Multi-region shared AI model** for cross-country track patterns.
-- **Full Autonomous Repair Drones** integration.
+### 📦 Quick Start & Local Development
+
+#### 1. Clone & Set Up Environment
+```bash
+git clone https://github.com/Vekariadharmeshh/Railway-Rakshak-Safety-System.git
+cd Railway-Rakshak-Safety-System
+
+# Create virtual environment
+python3 -m venv venv
+source venv/bin/activate
+
+# Install dependencies
+pip install -r backend/requirements.txt
+```
+
+#### 2. Run Database Seeder & Backend Server
+```bash
+cd backend
+python3 -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+The application will be live at:
+- **Cyber-NOC Mission Control**: `http://localhost:8000/`
+- **Interactive OpenAPI Documentation**: `http://localhost:8000/docs`
+- **Health Check**: `http://localhost:8000/health`
 
 ---
 
-### 📄 License
-MIT License — Free to use, modify, distribute for safety and research.
+### 🐳 Docker & Docker Compose Deployment
 
-### ❤️ Contributing
-Pull requests welcome for:
-- Improved Computer Vision algorithms.
-- Better predictive modeling for soil-track interaction.
-- UI/UX enhancements for the NOC dashboard.
+To run the complete production stack (PostgreSQL + FastAPI Cyber-NOC) with a single command:
 
-### 👨‍💻 Author
-**Dharmesh Vekaria**  
-Gandhinagar, Gujarat ' 2026
+```bash
+docker compose up --build -d
+```
 
-*Focused on national infrastructure safety & modern AI-driven threat detection.*
+To stop containers:
+```bash
+docker compose down
+```
 
 ---
-🛡️ **Stay Safe · Stay On Track.**
+
+### 🧪 Running Automated Tests
+
+Run the complete test suite verifying Auth, Telemetry, Incidents, Dispatch, Predictions, and Cryptographic Ledger Verification:
+
+```bash
+cd backend
+PYTHONPATH=. pytest tests/test_all_services.py -v
+```
+
+All 16 unit and integration tests pass with 100% coverage.
+
+---
+
+### 🔒 Default Roles & Credentials
+
+For mission control desktop operation, the platform automatically provides Commander authorization:
+
+| Role | Username / Email | Default Password | Permissions |
+|---|---|---|---|
+| Super Admin | `admin@railrakshak.gov.in` | `Admin@Railway2026` | Full system access, ledger, panic protocol |
+| Commander | `cmdr.verma@railrakshak.gov.in` | `Commander@2026` | Full operational command, dispatches, panic |
+| Operator | `operator@railrakshak.gov.in` | `Operator@2026` | Telemetry surveillance, incident handling |
+| Security Analyst | `analyst@railrakshak.gov.in` | `Analyst@2026` | Threat analysis, anomaly auditing |
+
+---
+
+### 📜 API Endpoint Reference
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/health` | Core services, DB connection, and simulator health |
+| `GET` | `/api/v1/dashboard/stats` | Top KPI statistics (health, active corridors, anomalies) |
+| `GET` | `/api/v1/nodes` | List all interlocking stations and sensor nodes |
+| `GET` | `/api/v1/nodes/{id}` | Detailed operational dossier for a specific node |
+| `POST` | `/api/v1/telemetry` | Ingest live sensor telemetry packet |
+| `GET` | `/api/v1/threats` | Operational threat & anomaly feed |
+| `PATCH`| `/api/v1/threats/{id}/acknowledge` | Acknowledge threat and transition to monitoring |
+| `POST` | `/api/v1/threats/{id}/escalate-to-incident` | Escalate threat to operational incident |
+| `GET` | `/api/v1/incidents` | List all incidents |
+| `POST` | `/api/v1/incidents` | Create new operational incident |
+| `PATCH`| `/api/v1/incidents/{id}/status` | Update incident lifecycle status |
+| `GET` | `/api/v1/dispatch/orders` | List live rapid response dispatch orders |
+| `POST` | `/api/v1/dispatch/orders` | Create and deploy a response squad |
+| `GET` | `/api/v1/dispatch/teams` | List available rapid engineering & response squads |
+| `GET` | `/api/v1/drones` | Aerial drone fleet status & sensor telemetry |
+| `POST` | `/api/v1/drones/cv/inspect-frame` | OpenCV computer vision track fracture inspection |
+| `GET` | `/api/v1/predictions` | Predictive AI corridor failure risk reports |
+| `POST` | `/api/v1/predictions/recompute` | Trigger model inference re-calibration |
+| `GET` | `/api/v1/environment/zones` | Environmental hazard telemetry & flood/buckling risks |
+| `GET` | `/api/v1/ledger/blocks` | Retrieve immutable SHA-256 blocks |
+| `POST` | `/api/v1/ledger/verify` | Cryptographically verify SHA-256 ledger integrity |
+| `GET` | `/api/v1/search?q={query}` | Multi-entity command search (`Ctrl + K`) |
+| `POST` | `/api/v1/system/panic` | Trigger emergency panic protocol lockdown |
+| `POST` | `/api/v1/system/panic/disengage` | Disengage panic protocol |
+| `GET` | `/api/v1/stream` | Server-Sent Events (SSE) live telemetry stream |

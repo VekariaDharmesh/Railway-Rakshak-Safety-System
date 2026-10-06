@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: railway_rakshak_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: rakshak_user
+      POSTGRES_PASSWORD: RakshakCyber2026!
+      POSTGRES_DB: railway_rakshak
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U rakshak_user -d railway_rakshak"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: railway_rakshak_noc
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://rakshak_user:RakshakCyber2026!@postgres:5432/railway_rakshak
+      - SECRET_KEY=railway-rakshak-ultra-secure-military-jwt-secret-key-change-in-prod-2026
+      - SIMULATOR_ENABLED=true
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres_data:

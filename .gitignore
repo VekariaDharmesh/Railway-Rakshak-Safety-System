@@ -29,3 +29,8 @@ Thumbs.db
 
 # Data / models (large files — add back selectively if needed)
 backend/data/
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
